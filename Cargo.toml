@@ -1,0 +1,12 @@
+[package]
+name = "assoc_threadlocal"
+version = "0.0.1"
+license = "MIT OR Apache-2.0"
+authors = ["Christian Thäter <ct@pipapo.org>"]
+description = "Associate thread local objects to types"
+repository = "https://github.com/cehteh/assoc_threadlocal.git"
+edition = "2021"
+keywords = ["static", "threadlocal"]
+
+[badges]
+maintenance = { status = "actively-developed" }
