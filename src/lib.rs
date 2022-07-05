@@ -104,8 +104,8 @@ macro_rules! assoc_threadlocal {
                 std::thread_local!(
                     static ASSOCIATED_THREADLOCAL: (
                         std::cell::Cell<$TARGET>,
-                        std::marker::PhantomData<$crate::MakeSync<$T>>,
-                        std::marker::PhantomData<$crate::MakeSync<$TAG>>,
+                        std::marker::PhantomData<$T>,
+                        std::marker::PhantomData<$TAG>,
                     ) = (
                         std::cell::Cell::new($INIT),
                         std::marker::PhantomData,
@@ -122,8 +122,8 @@ macro_rules! assoc_threadlocal {
                 std::thread_local!(
                     static ASSOCIATED_THREADLOCAL: (
                         std::cell::Cell<$TARGET>,
-                        std::marker::PhantomData<$crate::MakeSync<$T>>,
-                        std::marker::PhantomData<$crate::MakeSync<()>>,
+                        std::marker::PhantomData<$T>,
+                        std::marker::PhantomData<()>,
                     ) = (
                         std::cell::Cell::new($INIT),
                         std::marker::PhantomData,
@@ -135,11 +135,6 @@ macro_rules! assoc_threadlocal {
         }
     };
 }
-
-/// Only a helper, needs to be public because of the macro
-#[doc(hidden)]
-pub struct MakeSync<T>(T);
-unsafe impl<T> Sync for MakeSync<T> {}
 
 #[cfg(test)]
 mod tests {
